@@ -1,21 +1,23 @@
-MIT License
+Personal Use License
 
 Copyright (c) 2024 Cindy Aprilia
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Usage Rights:
+This template is free to use for personal purposes only. 
+You may use, modify, and adapt the template for personal projects, such as personal portfolios or non-commercial websites.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Attribution:
+Any usage of this template, including modifications, must include the following attribution in a prominent location on your website or project:
+This template was created by [Cindy Aprilia](https://www.linkedin.com/in/apriliacindy).
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Commercial Use:
+Commercial use of this template or any derivative work is not permitted under this license. 
+If you wish to use the template for commercial purposes, you must obtain explicit written permission from the copyright holder.
+
+No Warranty:
+This template is provided "as is", without any express or implied warranties. 
+The author will not be held liable for any damages or issues arising from the use of this template.
+
+Acknowledgement:
+Frontend built using the Bootstrap framework (https://getbootstrap.com/).
+Frontend timeline based on a Gantt chart created by Alfrick Opidi, as seen in [freeCodeCamp article](https://www.freecodecamp.org/news/create-gantt-chart-using-css-grid/).

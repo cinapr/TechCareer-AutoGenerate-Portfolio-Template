@@ -395,8 +395,7 @@ function calculateGridPlacement($start_date, $end_date) {
     <br>
 
     <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-        <p class="mb-0"> <a href="#">Back to top</a> </p>
+        <p>Portfolio built based on Template made by <a href="https://github.com/cinapr/TechCareerPortofolioTemplate/">Cindy Aprilia</a> @ 2024</p>
     </footer>
 </body>
 </html>

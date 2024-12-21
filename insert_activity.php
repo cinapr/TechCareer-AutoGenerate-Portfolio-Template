@@ -6,27 +6,27 @@ try {
 
     // Insert sample data
     $pdo->exec("INSERT INTO work (job_title, company_name, start_date, end_date, details) VALUES
-        ('Software Engineer', 'Wilmar Consultancy Services', '2018-07-02', '2022-05-31', 'Worked on various web applications.')
+        ('Software Engineer', 'ABC Consultancy Services', '2018-07-02', '2022-05-31', 'Worked on various web applications.')
     ");
 
     $pdo->exec("INSERT INTO work (job_title, company_name, start_date, end_date, details) VALUES
-        ('Intern Software Developer', 'Solita', '2023-04-01', '2023-07-31', 'Worked on various web applications.')
+        ('Intern Software Developer', 'Tech Inc', '2023-04-01', '2023-07-31', 'Worked on various web applications.')
     ");
 
     $pdo->exec("INSERT INTO education (degree_program, university_name, start_date, end_date, thesis_title, syllabus) VALUES
-        ('Computer Science', 'Universitas Sumatera Utara', '2013-07-15', '2018-01-25', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
+        ('Computer Science', 'University UNII', '2013-07-15', '2018-01-25', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
     ");
 
     $pdo->exec("INSERT INTO education (degree_program, university_name, start_date, end_date, thesis_title, syllabus) VALUES
-        ('Computer Science', 'Vrije University Amsterdam', '2022-09-01', '2024-08-22', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
+        ('Computer Science', 'University UNII2', '2022-09-01', '2024-08-22', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
     ");
 
     $pdo->exec("INSERT INTO education (degree_program, university_name, start_date, end_date, thesis_title, syllabus) VALUES
-        ('Computer Science', 'University of LAquila', '2022-09-01', '2024-08-31', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
+        ('Computer Science', 'University UNII3', '2022-09-01', '2024-08-31', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
     ");
 
     $pdo->exec("INSERT INTO education (degree_program, university_name, start_date, end_date, thesis_title, syllabus) VALUES
-        ('Computer Science', 'LUT University', '2022-09-01', '2024-08-15', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
+        ('Computer Science', 'University UNII4', '2022-09-01', '2024-08-15', 'AI in Software Development', 'Data Structures, Algorithms, Machine Learning')
     ");
 
     $pdo->exec("INSERT INTO publication (title, start_date, end_date, year, citation_details) VALUES
@@ -38,11 +38,8 @@ try {
     ");
 
     $pdo->exec("INSERT INTO Awards (Name, Year, Description) VALUES
-        ('Erasmus Mundus Joint Master Degree Scholarship Awardee', 2024, 'Awarded fully funded scholarship by the European Union for attending international joint master degree program.'),
-        ('Best Presenter in ICAEB2024', 2024, 'International Conference on Applied Economics and Business for the paper titled Exploring Stakeholder Relationships in Technology Adoption as Strategic Innovation.'),
-        ('LUT School of Engineering Science (LENS) Scholarship', 2024, 'For the satisfactory completion of the degree.'),
-        ('Highest Achievement Student of the Class of 2013', 2018, 'Awarded by the IT Department, Universitas Sumatera Utara, for achieving the highest academic standing in the cohort.'),
-        ('Thesis Grant', 2018, 'Received from Universitas Sumatera Utara in recognition of an exceptional thesis.'),
+        ('Highest Achievement Student of the Class of 2013', 2018, 'Awarded by the IT Department, Universitas UNII, for achieving the highest academic standing in the cohort.'),
+        ('Thesis Grant', 2018, 'Received from Universitas UNII in recognition of an exceptional thesis.'),
         ('Academic Achievement Improvement-Merit Scholarships', 2014, 'Awarded by The Ministry of Research and Higher Education for significant academic excellence.')
     ");
 

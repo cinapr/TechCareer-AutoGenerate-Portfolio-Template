@@ -110,15 +110,15 @@ function calculateGridPlacement($start_date, $end_date) {
         </div>
         <div class="row flex-nowrap justify-content-center align-items-center">
             <div class="col-8 text-center">
-                <p class="lead my-3">Komplek Taman Setia Budi Indah (TASBIH) 1 Blok VV No.118 • Medan, Sumatera Utara, Indonesia 20122</p>
+                <p class="lead my-3">Address • City, Province, Country Postal_Code</p>
                     <p>
-                        <a class="link-secondary lead my-3" href="mailto:cindyapriliaf@gmail.com">Email:cindyapriliaf@gmail.com</a> •
-                        <a class="link-secondary lead my-3" href="https://api.whatsapp.com/send/?phone=62822&text=&app_absent=0">Call & Whatsapp:+62822</a>
+                        <a class="link-secondary lead my-3" href="mailto:email@gmail.com">Email:email@gmail.com</a> •
+                        <a class="link-secondary lead my-3" href="https://api.whatsapp.com/send/?phone=628PHONE&text=&app_absent=0">Call & Whatsapp:+628PHONE</a>
                     </p>
                     <p>
-                        <a class="link-secondary lead my-3" href="https://www.linkedin.com/in/apriliacindy/" target="_blank">LinkedIn</a> •
-                        <a class="link-secondary lead my-3" href="https://github.com/cinapr" target="_blank">Github</a> •
-                        <a class="link-secondary lead my-3" href="https://www.youtube.com/@CindyApriliaSE4GD" target="_blank">YouTube</a>
+                        <a class="link-secondary lead my-3" href="https://www.linkedin.com/in/LINKEDINID/" target="_blank">LinkedIn</a> •
+                        <a class="link-secondary lead my-3" href="https://github.com/GITHUBID" target="_blank">Github</a> •
+                        <a class="link-secondary lead my-3" href="https://www.youtube.com/@YOUTUBEID" target="_blank">YouTube</a>
                     </p>
                     <p>
                         <a class="link-secondary lead my-3" href="#MyContact" target="_blank">Contact Details</a> •

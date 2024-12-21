@@ -4,8 +4,10 @@ This template is designed to help you build a portfolio to showcase your tech ca
 It includes sections for displaying your work, education, and publications using a timeline chart. 
 Additionally, it provides sections for certifications, awards, and projects.
 
-**Demo**
+## Demo
 ![Portfolio Template Screenshot](./demo.png)
+
+## How to generate the Portfolio?
 
 **Run a PHP Server**  
     You can use XAMPP (for Windows) or Apache (for Linux) to run the PHP server.
@@ -58,6 +60,8 @@ Once you're satisfied with the template and it looks suitable, save the page as 
 After a few minutes, your website will be live. Visit it at:
 `https://yourusername.github.io`
 
+
+## License and Acknowledgement
 **License**
 This template is free to use for personal purposes only. 
 Any usage of this template, including modifications, must include the following attribution in a prominent location on your website:

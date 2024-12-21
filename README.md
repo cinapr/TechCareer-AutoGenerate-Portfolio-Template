@@ -4,6 +4,9 @@ This template is designed to help you build a portfolio to showcase your tech ca
 It includes sections for displaying your work, education, and publications using a timeline chart. 
 Additionally, it provides sections for certifications, awards, and projects.
 
+**Demo**
+![Portfolio Template Screenshot](./demo.png)
+
 **Run a PHP Server**  
     You can use XAMPP (for Windows) or Apache (for Linux) to run the PHP server.
     

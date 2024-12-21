@@ -6,6 +6,7 @@ Additionally, it provides sections for certifications, awards, and projects.
 
 ## Demo
 ![Portfolio Template Screenshot](./demo.png)
+![Portfolio Template Screenshot](./demo2.png)
 
 ## How to generate the Portfolio?
 

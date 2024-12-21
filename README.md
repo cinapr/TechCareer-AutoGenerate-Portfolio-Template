@@ -27,8 +27,9 @@ Open `insert_activity.php` in your preferred text editor.
 Modify the data inside the `INSERT` query to match your profile information (work experience, education, publications, etc.).
     
 **Run PHP Initiation**  
-    Every time you make changes to `insert_activity.php`, run the following in your browser to initialize the changes: `http://localhost/.../TechCareerPortfolioTemplate/database_setup.php
-http://localhost/.../TechCareerPortfolioTemplate/insert_activity.php` 
+    Every time you make changes to `insert_activity.php`, run the following pages in your browser to initialize the changes: 
+    - `http://localhost/.../TechCareerPortfolioTemplate/database_setup.php
+    - http://localhost/.../TechCareerPortfolioTemplate/insert_activity.php` 
     
 **Preview the Template**  
 Open the page in your browser to see how it looks:

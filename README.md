@@ -7,7 +7,7 @@ Additionally, it provides sections for certifications, awards, and projects.
 ## Demo
 ![Portfolio Template Screenshot](./demo.png)
 ![Portfolio Template Screenshot](./demo3.png)
-PS. demo.png and demo2.png is only for readme purpose, you can delete it after cloning
+PS. demo.png and demo3.png is only for readme purpose, you can delete it after cloning
 
 ## How to generate the Portfolio?
 

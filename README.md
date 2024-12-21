@@ -17,8 +17,8 @@ PS. demo.png and demo2.png is only for readme purpose, you can delete it after c
 **Clone the Repository**  
 Clone the repository to your local machine and place it in the appropriate folder for your server : `https://github.com/cinapr/TechCareerPortfolioTemplate/` 
 For example, for XAMPP on Windows, clone the project into the `htdocs` folder
-
-**Edit Identity and Contact Info**
+    
+**Edit Identity and Contact Info**  
 Open `index.php` in your preferred text editor.
 Modify this part: `header class="border-bottom lh-1 py-3"`, according to your name and contact info
     

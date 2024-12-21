@@ -1,0 +1,52 @@
+.chart-container {
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 600px;
+    scroll-behavior: smooth;
+    padding-top:0;
+}
+
+.chart {
+    display: grid;
+    grid-auto-rows: auto;
+    width: calc(13 * 200px);
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: repeat(169, 16.6px); /* 13 years x 12 months -> CHANGE INTO 13 years x 13 months */
+}
+
+.chart-period > span {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 0;
+    color: #333;
+}
+
+.chart-row-bars {
+    display: grid;
+    grid-template-columns: repeat(156, 16.6px);
+    grid-gap: 2px;
+}
+
+.chart-row-bars li {
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor:pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.work { background-color: #007AFC; }
+.education { background-color: #D73443; }
+.publication { background-color: #FFC107; }
+.certification { background-color: #6A1B9A; }
+.award { background-color: #E91E63; } /*17A1B7*/

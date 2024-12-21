@@ -1,0 +1,52 @@
+
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.header hr {
+    border: none;
+    border-top: 2px solid black;
+    margin: 15px auto;
+    width: 85%;
+}
+
+.header p {
+    margin: 5px 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.header a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin: 10px 0;
+}
+
+.contact-info span {
+    display: inline-block;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.social-links {
+    font-size: 15px;
+}

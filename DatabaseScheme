@@ -1,0 +1,59 @@
+-- Create table for Work experiences
+CREATE TABLE work (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    job_title TEXT NOT NULL,
+    company_name TEXT NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
+    details TEXT
+);
+
+-- Create table for Education experiences
+CREATE TABLE education (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    degree_program TEXT NOT NULL,
+    university_name TEXT NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
+    thesis_title TEXT,
+    syllabus TEXT
+);
+
+-- Create table for Publications
+CREATE TABLE publication (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    citation_details TEXT
+);
+
+-- Create table for Awards
+CREATE TABLE Awards (
+    AwardID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Year INT NOT NULL,
+    Description TEXT NOT NULL
+);
+
+-- Create table for Certifications
+CREATE TABLE Certifications (
+    CertificationID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    IssueDate DATE NOT NULL,
+    Issuer VARCHAR(255) NOT NULL
+);
+
+-- Create table for Projects
+CREATE TABLE Projects (
+    ProjectID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    ShortDescription TEXT NOT NULL,
+    LongDescription TEXT NOT NULL,
+    Tags VARCHAR(255) NOT NULL,
+    GithubLink VARCHAR(255),
+    YoutubeLink VARCHAR(255),
+    PaperLink VARCHAR(255),
+    PresentationLink VARCHAR(255)
+);
+
+

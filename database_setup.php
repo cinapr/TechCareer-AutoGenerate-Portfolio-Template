@@ -12,6 +12,7 @@ try {
         DROP TABLE IF EXISTS Awards;
         DROP TABLE IF EXISTS Certifications;
         DROP TABLE IF EXISTS Projects;
+        DROP TABLE IF EXISTS skills;
     ');
 
     // Create tables
@@ -68,6 +69,12 @@ try {
             YoutubeLink TEXT,
             PaperLink TEXT,
             PresentationLink TEXT
+        );
+
+        CREATE TABLE skills (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            skill_name TEXT NOT NULL,
+            category TEXT NOT NULL
         );
     ');
 

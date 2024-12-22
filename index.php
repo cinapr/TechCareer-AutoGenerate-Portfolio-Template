@@ -29,6 +29,35 @@ $awards_data = $query_awards->fetchAll(PDO::FETCH_ASSOC);
 $query_projects = $pdo->query("SELECT * FROM projects");
 $projects_data = $query_projects->fetchAll(PDO::FETCH_ASSOC);
 
+// Fetch skills for each skill category from the database
+$query_technical_skills = $pdo->query("SELECT skill_name, category 
+                                       FROM skills 
+                                       WHERE category IN ('Programming', 'Tools', 'Hardware') 
+                                       ORDER BY 
+                                           CASE category 
+                                               WHEN 'Programming' THEN 1 
+                                               WHEN 'Tools' THEN 2 
+                                               WHEN 'Hardware' THEN 3 
+                                           END");
+$technical_skills = $query_technical_skills->fetchAll(PDO::FETCH_ASSOC);
+
+$query_soft_skills = $pdo->query("SELECT skill_name, category 
+                                  FROM skills 
+                                  WHERE category IN ('Methodologies', 'Research_Analysis', 'Language', 'Managerial') 
+                                  ORDER BY 
+                                      CASE category 
+                                          WHEN 'Methodologies' THEN 1 
+                                          WHEN 'Research_Analysis' THEN 2 
+                                          WHEN 'Language' THEN 3 
+                                          WHEN 'Managerial' THEN 4 
+                                      END");
+$soft_skills = $query_soft_skills->fetchAll(PDO::FETCH_ASSOC);
+
+$query_interests = $pdo->query("SELECT skill_name, category 
+                               FROM skills 
+                               WHERE category = 'Interests'");
+$interests = $query_interests->fetchAll(PDO::FETCH_ASSOC);
+
 // Function to allocate lines for overlapping events
 function allocateLines($events) {
     $lines = [];
@@ -97,6 +126,7 @@ function calculateGridPlacement($start_date, $end_date) {
     
     <!--CSS FROM BOOTSTRAP EXAMPLES -->
     <link href="styles/exampleBootstrap.css" rel="stylesheet">
+    <link href="styles/skills.css" rel="stylesheet">
     <!--<link href="styles/blog.css" rel="stylesheet">-->
     <!--<link href="styles/product.css" rel="stylesheet">-->
 </head>
@@ -126,6 +156,7 @@ function calculateGridPlacement($start_date, $end_date) {
                         <a class="link-secondary lead my-3" href="#Portfolio" target="_blank">Portofolio</a> •
                         <a class="link-secondary lead my-3" href="#Awards" target="_blank">Awards</a> •
                         <a class="link-secondary lead my-3" href="#Certifications" target="_blank">Certifications</a>
+                        <a class="link-secondary lead my-3" href="#SkillTags" target="_blank">Skills</a>
                     </p>
             </div>
         </div>
@@ -388,6 +419,91 @@ function calculateGridPlacement($start_date, $end_date) {
                 document.getElementById('project-modal').classList.remove('active');
             }
         </script>
+        <!-- End #Projects -->
+
+        <!-- Skills Section -->
+        <h1 id="SkillTags" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">Skills</h1>
+        <div class="b-example-divider"></div>
+        <div id="SkillTags" class="container">
+            <div class="row">
+                <!-- Technical Skills -->
+                <div class="col-md-4 skills">
+                    <h2 class="heading">Technical Skills</h2>
+                    <h3>Programming</h3>
+                    <ul>
+                        <?php foreach ($technical_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Programming'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <h3>Tools</h3>
+                    <ul>
+                        <?php foreach ($technical_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Tools'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <h3>Hardware</h3>
+                    <ul>
+                        <?php foreach ($technical_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Hardware'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="col-md-4 skills">
+                    <h2 class="heading">Soft Skills</h2>
+                    <h3>Methodologies</h3>
+                    <ul>
+                        <?php foreach ($soft_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Methodologies'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <h3>Research & Analysis</h3>
+                    <ul>
+                        <?php foreach ($soft_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Research_Analysis'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <h3>Language</h3>
+                    <ul>
+                        <?php foreach ($soft_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Language'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <h3>Managerial</h3>
+                    <ul>
+                        <?php foreach ($soft_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Managerial'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+                <!-- Interests -->
+                <div class="col-md-4 skills">
+                    <h2 class="heading">Interests</h2>
+                    <ul>
+                        <?php foreach ($interests as $skill): ?>
+                            <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End #skills -->
 
 
     </main>

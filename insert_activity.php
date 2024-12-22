@@ -43,6 +43,93 @@ try {
         ('Academic Achievement Improvement-Merit Scholarships', 2014, 'Awarded by The Ministry of Research and Higher Education for significant academic excellence.')
     ");
 
+    
+
+    // Insert skills data - Take notice on the category should be Programming, Tools, Hardware, Methodologies, Language, Research_Analysis, Managerial, Interests - Should have at least one of each category
+    // Insert programming skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('C#', 'Programming'),
+        ('C#.NET', 'Programming'),
+        ('ASP.NET', 'Programming'),
+        ('C', 'Programming'),
+        ('Python', 'Programming');
+    ");
+
+    // Insert tools skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('Visual Studio', 'Tools'),
+        ('SQL Server', 'Tools'),
+        ('DBMS', 'Tools'),
+        ('Arduino Uno', 'Tools'),
+        ('Microsoft Server', 'Tools'),
+        ('Jira', 'Tools'),
+        ('Internal ERP systems', 'Tools');
+    ");
+
+    // Insert hardware skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('IoT Integration', 'Hardware');
+    ");
+
+    // Insert Methodologies skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('Agile', 'Methodologies'),
+        ('Scrum', 'Methodologies'),
+        ('System Integration Testing (SIT)', 'Methodologies'),
+        ('User Acceptance Testing (UAT)', 'Methodologies'),
+        ('Circular Economy Practices', 'Methodologies');
+    ");
+
+    // Insert research & analysis skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('Technology Adoption', 'Research_Analysis'),
+        ('Economic Sustainability', 'Research_Analysis'),
+        ('Stakeholder Analysis', 'Research_Analysis'),
+        ('LLM', 'Research_Analysis'),
+        ('Ethical AI', 'Research_Analysis'),
+        ('Ethical IT', 'Research_Analysis');
+    ");
+
+    // Insert Language skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('Indonesian (Native)', 'Language'),
+        ('English (IELTS C1)', 'Language'),
+        ('Chinese (TOCFL A2)', 'Language'),
+        ('Chinese Fujian Dialect (Bilingual Fluency)', 'Language');
+    ");
+
+    // Insert Managerial skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('Teaching & Mentoring', 'Managerial'),
+        ('User Support', 'Managerial'),
+        ('Technical Documentation', 'Managerial'),
+        ('Syllabus Development', 'Managerial'),
+        ('Student Guidance', 'Managerial'),
+        ('Timesheet Management', 'Managerial'),
+        ('Staff Recruitment and Training', 'Managerial');
+    ");
+
+    // Insert Interests skills
+    $pdo->exec("INSERT INTO skills (skill_name, category) VALUES
+        ('Sustainability', 'Interests'),
+        ('IT Business Analyst', 'Interests'),
+        ('System Analyst', 'Interests'),
+        ('Digital Business Analysts', 'Interests'),
+        ('Functional Consultant', 'Interests'),
+        ('Digital Transformation', 'Interests'),
+        ('Business Information', 'Interests'),
+        ('Solutions Architect', 'Interests'),
+        ('Technical Writer', 'Interests'),
+        ('IT Support', 'Interests'),
+        ('Delivering Specialist', 'Interests'),
+        ('Inter-disciplinary IT', 'Interests'),
+        ('Decision Making', 'Interests'),
+        ('Ethics', 'Interests'),
+        ('ICT', 'Interests'),
+        ('Ethical AI', 'Interests'),
+        ('ERP', 'Interests');
+    ");
+
     $pdo->exec("INSERT INTO Certifications (Name, IssueDate, Issuer) VALUES
         ('Business Analysis Fundamentals', '2024-11-16', 'Microsoft & Coursera'),
         ('International English Language Testing System (IELTS) C1', '2021-11-08', 'IDP'),

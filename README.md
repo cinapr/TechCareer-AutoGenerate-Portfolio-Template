@@ -25,6 +25,9 @@ Modify this part: `header class="border-bottom lh-1 py-3"`, according to your na
 **Edit the Data**  
 Open `insert_activity.php` in your preferred text editor. 
 Modify the data inside the `INSERT` query to match your profile information (work experience, education, publications, etc.).
+
+PS1. In project, any link that you do not have, just empty out. In project, only Name, Tags, and Short Description are mandatory.
+PS2. In project, there are several github link (github1,2,3,4). It is for covering the case for your project have multiple github link (Like separate frontend-backend-communication). If the github code only exist in 1 repo, just empty out the other github link.
     
 **Run PHP Initiation** 
 Every time you make changes to `insert_activity.php`, run the following pages in your browser to initialize the changes: 

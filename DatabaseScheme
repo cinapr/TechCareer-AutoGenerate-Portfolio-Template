@@ -45,15 +45,26 @@ CREATE TABLE Certifications (
 
 -- Create table for Projects
 CREATE TABLE Projects (
-    ProjectID INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255) NOT NULL,
+    ProjectID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
     ShortDescription TEXT NOT NULL,
     LongDescription TEXT NOT NULL,
-    Tags VARCHAR(255) NOT NULL,
-    GithubLink VARCHAR(255),
-    YoutubeLink VARCHAR(255),
-    PaperLink VARCHAR(255),
-    PresentationLink VARCHAR(255)
+    Tags TEXT NOT NULL,
+    GithubLink1 TEXT,
+    GithubLink2 TEXT,
+    GithubLink3 TEXT,
+    GithubLink4 TEXT,
+    YoutubeLink TEXT,
+    PaperLink TEXT,
+    PresentationLink TEXT
 );
+
+-- Create table for skills
+CREATE TABLE skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    skill_name VARCHAR(255) NOT NULL,
+    category ENUM('Programming', 'Tools', 'Hardware', 'Methodologies', 'Research_Analysis', 'Language', 'Managerial', 'Interests') NOT NULL
+);
+
 
 

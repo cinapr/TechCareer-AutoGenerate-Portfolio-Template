@@ -60,16 +60,20 @@ try {
         );
 
         CREATE TABLE Projects (
-            ProjectID INTEGER PRIMARY KEY,
+            ProjectID INTEGER PRIMARY KEY AUTOINCREMENT,
             Name TEXT NOT NULL,
             ShortDescription TEXT NOT NULL,
-            LongDescription TEXT NOT NULL,
+            LongDescription TEXT,
             Tags TEXT NOT NULL,
-            GithubLink TEXT,
+            GithubLink1 TEXT,
+            GithubLink2 TEXT,
+            GithubLink3 TEXT,
+            GithubLink4 TEXT,
             YoutubeLink TEXT,
             PaperLink TEXT,
             PresentationLink TEXT
         );
+
 
         CREATE TABLE skills (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

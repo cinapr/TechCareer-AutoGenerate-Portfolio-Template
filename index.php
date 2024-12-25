@@ -58,6 +58,7 @@ $query_interests = $pdo->query("SELECT skill_name, category
                                WHERE category = 'Interests'");
 $interests = $query_interests->fetchAll(PDO::FETCH_ASSOC);
 
+
 // Function to allocate lines for overlapping events
 function allocateLines($events) {
     $lines = [];
@@ -111,7 +112,7 @@ function calculateGridPlacement($start_date, $end_date) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Career Timeline</title>
+    <title>Cindy Aprilia</title>
 
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -189,10 +190,10 @@ function calculateGridPlacement($start_date, $end_date) {
                                         <?php foreach ($line as $work): ?>
                                             <?php list($grid_start, $span_months) = calculateGridPlacement($work['start_date'], $work['end_date']); ?>
                                             <li class="work" style="cursor:pointer; grid-column: <?php echo $grid_start; ?> / span <?php echo $span_months; ?>"
-                                                onclick="openModal('<?php echo htmlspecialchars($work['job_title']); ?>', '<?php echo htmlspecialchars($work['company_name']); ?>', '<?php echo htmlspecialchars($work['start_date']); ?> - <?php echo htmlspecialchars($work['end_date']); ?>', '<?php echo htmlspecialchars($work['details']); ?>')">
+                                                onclick="openWorkEducationModal('<?php echo htmlspecialchars($work['job_title']); ?>', '<?php echo htmlspecialchars($work['company_name']); ?>', '<?php echo htmlspecialchars($work['start_date']); ?> - <?php echo htmlspecialchars($work['end_date']); ?>', '<?php echo htmlspecialchars($work['details']); ?>')">
                                                 <div class="title"><?php echo htmlspecialchars($work['job_title']); ?></div>
                                                 <div class="subtitle"><?php echo htmlspecialchars($work['company_name']); ?></div>
-                                                <div class="dates"><?php echo htmlspecialchars($work['start_date']); ?> - <?php echo htmlspecialchars($work['end_date']); ?></div>
+                                                <!--<div class="dates"><?php echo htmlspecialchars($work['start_date']); ?> - <?php echo htmlspecialchars($work['end_date']); ?></div>-->
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -206,10 +207,10 @@ function calculateGridPlacement($start_date, $end_date) {
                                         <?php foreach ($line as $education): ?>
                                             <?php list($grid_start, $span_months) = calculateGridPlacement($education['start_date'], $education['end_date']); ?>
                                             <li class="education" style="cursor:pointer; grid-column: <?php echo $grid_start; ?> / span <?php echo $span_months; ?>"
-                                                onclick="openModal('<?php echo htmlspecialchars($education['degree_program']); ?>', '<?php echo htmlspecialchars($education['university_name']); ?>', '<?php echo htmlspecialchars($education['start_date']); ?> - <?php echo htmlspecialchars($education['end_date']); ?>', '<?php echo htmlspecialchars($education['thesis_title'] ?? ''); ?>')">
+                                                onclick="openWorkEducationModal('<?php echo htmlspecialchars($education['degree_program']); ?>', '<?php echo htmlspecialchars($education['university_name']); ?>', '<?php echo htmlspecialchars($education['start_date']); ?> - <?php echo htmlspecialchars($education['end_date']); ?>', '<?php echo htmlspecialchars($education['thesis_title'] ?? ''); ?>')">
                                                 <div class="title"><?php echo htmlspecialchars($education['degree_program']); ?></div>
                                                 <div class="subtitle"><?php echo htmlspecialchars($education['university_name']); ?></div>
-                                                <div class="dates"><?php echo htmlspecialchars($education['start_date']); ?> - <?php echo htmlspecialchars($education['end_date']); ?></div>
+                                                <!--<div class="dates"><?php echo htmlspecialchars($education['start_date']); ?> - <?php echo htmlspecialchars($education['end_date']); ?></div>-->
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -228,7 +229,7 @@ function calculateGridPlacement($start_date, $end_date) {
                                                 //$grid_start = max(1, $pub_year - 2013 + 1);
                                             ?>
                                             <li class="publication" style="cursor:pointer; grid-column: <?php echo $grid_start; ?> / span <?php echo $span_months; ?>"
-                                            onclick="openModal('<?php echo htmlspecialchars($publication['title']); ?>', '<?php echo htmlspecialchars($publication['citation_details'] ?? ''); ?>', '<?php echo htmlspecialchars($publication['year'] ?? 'Unknown'); ?>', '')">
+                                            onclick="openWorkEducationModal('<?php echo htmlspecialchars($publication['title']); ?>', '<?php echo htmlspecialchars($publication['citation_details'] ?? ''); ?>', '<?php echo htmlspecialchars($publication['year'] ?? 'Unknown'); ?>', '')">
                                                 <div class="title"><?php echo htmlspecialchars($publication['title']); ?></div>
                                                 <!-- <div class="subtitle"><?php echo htmlspecialchars($publication['citation_details'] ?? ''); ?></div> -->
                                                 <!-- <div class="dates"><?php echo htmlspecialchars($publication['year'] ?? 'Unknown'); ?></div> -->
@@ -253,30 +254,32 @@ function calculateGridPlacement($start_date, $end_date) {
                     </script>
 
                     <!-- Resume Timeline Modal -->
-                    <div class="overlay" id="overlay"></div>
-                    <div class="modal" id="modal">
+                    <div class="overlay" id="work-education-overlay"></div>
+                    <div class="modal" id="work-education-modal">
                         <div class="modal-header">
-                            <h5 id="modal-title" class="modal-title"></h5>
-                            <button class="btn-close" onclick="closeModal()" aria-label="Close">&times;</button>
+                            <h5 id="work-education-modal-title" class="modal-title"></h5>
+                            <button class="btn-close" onclick="closeWorkEducationModal()" aria-label="Close">&times;</button>
                         </div>
-                        <div class="modal-body" id="modal-content"></div>
+                        <div class="modal-body" id="work-education-modal-content"></div>
                     </div>
 
                     <script>
-                        function openModal(title, subtitle, dates, details) {
-                            document.getElementById('modal-title').textContent = title;
-                            document.getElementById('modal-content').innerHTML = `
+                        // Open modal for Education or Work (Generic Function)
+                        function openWorkEducationModal(title, subtitle, dates, details) {
+                            document.getElementById('work-education-modal-title').textContent = title;
+                            document.getElementById('work-education-modal-content').innerHTML = `
                                 <strong>Subtitle:</strong> ${subtitle}<br>
                                 <strong>Dates:</strong> ${dates}<br>
                                 <strong>Details:</strong> ${details || 'N/A'}
                             `;
-                            document.getElementById('overlay').classList.add('active');
-                            document.getElementById('modal').classList.add('active');
+                            document.getElementById('work-education-overlay').classList.add('active');
+                            document.getElementById('work-education-modal').classList.add('active');
                         }
 
-                        function closeModal() {
-                            document.getElementById('overlay').classList.remove('active');
-                            document.getElementById('modal').classList.remove('active');
+                        // Close modal for Education or Work
+                        function closeWorkEducationModal() {
+                            document.getElementById('work-education-overlay').classList.remove('active');
+                            document.getElementById('work-education-modal').classList.remove('active');
                         }
                     </script>
                     
@@ -306,7 +309,7 @@ function calculateGridPlacement($start_date, $end_date) {
         <br>
 
         <?php
-        //
+        //Awards
         ?>
         <h1 id="Awards" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">Awards</h1>
         <div class="b-example-divider"></div>    
@@ -339,51 +342,78 @@ function calculateGridPlacement($start_date, $end_date) {
 
         <div id="Portfolio" class="container">
             <div class="row">
-                <?php foreach ($projects_data as $project): ?>
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <!-- Project Name -->
-                                <h4 class="card-title"><?= htmlspecialchars($project['Name']); ?></h4>
-                                <!-- Short Description -->
-                                <p class="card-text"><?= htmlspecialchars($project['ShortDescription']); ?></p>
-                                <!-- Tags -->
-                                <p class="card-tags">
-                                    <?php
-                                    $tags = explode(',', $project['Tags']); // Assuming tags are stored as comma-separated values in the database
-                                    foreach ($tags as $tag):
-                                    ?>
-                                        <span class="badge bg-primary"><?= htmlspecialchars(trim($tag)); ?></span>
-                                    <?php endforeach; ?>
-                                </p>
-                                <!-- Links -->
-                                <p>
-                                    <?php if (!empty($project['GithubLink'])): ?>
-                                        <a href="<?= htmlspecialchars($project['GithubLink']); ?>" target="_blank" class="card-link">Github</a>
-                                    <?php endif; ?>
-                                    <?php if (!empty($project['YoutubeLink'])): ?>
-                                        <a href="<?= htmlspecialchars($project['YoutubeLink']); ?>" target="_blank" class="card-link">YouTube</a>
-                                    <?php endif; ?>
-                                    <?php if (!empty($project['PaperLink'])): ?>
-                                        <a href="<?= htmlspecialchars($project['PaperLink']); ?>" target="_blank" class="card-link">Paper</a>
-                                    <?php endif; ?>
-                                    <?php if (!empty($project['PresentationLink'])): ?>
-                                        <a href="<?= htmlspecialchars($project['PresentationLink']); ?>" target="_blank" class="card-link">Presentation</a>
-                                    <?php endif; ?>
-                                </p>
-                                <!-- Modal Trigger -->
-                                <button class="btn btn-primary" onclick="openProjectModal(
-                                    '<?= htmlspecialchars($project['Name'], ENT_QUOTES); ?>',
-                                    '<?= htmlspecialchars($project['LongDescription'], ENT_QUOTES); ?>',
-                                    '<?= htmlspecialchars($project['GithubLink'] ?? '', ENT_QUOTES); ?>',
-                                    '<?= htmlspecialchars($project['YoutubeLink'] ?? '', ENT_QUOTES); ?>',
-                                    '<?= htmlspecialchars($project['PaperLink'] ?? '', ENT_QUOTES); ?>',
-                                    '<?= htmlspecialchars($project['PresentationLink'] ?? '', ENT_QUOTES); ?>'
-                                )">More Details</button>
-                            </div>
+            <?php foreach ($projects_data as $project): ?>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title"><?= htmlspecialchars($project['Name']); ?></h4>
+                            <p class="card-text"><?= htmlspecialchars($project['ShortDescription']); ?></p>
+                            <p class="card-tags">
+                                <?php
+                                $tags = explode(',', $project['Tags']);
+                                foreach ($tags as $tag):
+                                ?>
+                                    <span class="badge bg-primary"><?= htmlspecialchars(trim($tag)); ?></span>
+                                <?php endforeach; ?>
+                            </p>
+                            <p>
+                                <?php if (!empty($project['YoutubeLink'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['YoutubeLink']); ?>" target="_blank" class="card-link">YouTube/Demo</a>
+                                <?php endif; ?>
+                                <?php if (!empty($project['PaperLink'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['PaperLink']); ?>" target="_blank" class="card-link">Documentation</a>
+                                <?php endif; ?>
+                                <?php if (!empty($project['PresentationLink'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['PresentationLink']); ?>" target="_blank" class="card-link">Presentation</a>
+                                <?php endif; ?>
+                                <?php if (!empty($project['GithubLink1'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['GithubLink1']); ?>" target="_blank" class="card-link">Github</a>
+                                <?php endif; ?>
+                                <?php if (!empty($project['GithubLink2'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['GithubLink2']); ?>" target="_blank" class="card-link">Github</a>
+                                <?php endif; ?>
+                                <?php if (!empty($project['GithubLink3'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['GithubLink3']); ?>" target="_blank" class="card-link">Github</a>
+                                <?php endif; ?>
+                                <?php if (!empty($project['GithubLink4'])): ?>
+                                    <a class="btn btn-primary" href="<?= htmlspecialchars($project['GithubLink4']); ?>" target="_blank" class="card-link">Github</a>
+                                <?php endif; ?>
+                                <!-- Other links handled similarly -->
+                            </p>
+                            <!-- <button  -->
+                            <!--     class="btn btn-primary"  -->
+                            <!--     data-project-name="<?= htmlspecialchars($project['Name'], ENT_QUOTES); ?>" -->
+                            <!--     data-project-description="<?= htmlspecialchars($project['LongDescription'] ?? $project['ShortDescription'], ENT_QUOTES); ?>" -->
+                            <!--     data-github-link="<?= htmlspecialchars($project['GithubLink1'] ?? '', ENT_QUOTES); ?>" -->
+                            <!--     data-youtube-link="<?= htmlspecialchars($project['YoutubeLink'] ?? '', ENT_QUOTES); ?>" -->
+                            <!--     data-paper-link="<?= htmlspecialchars($project['PaperLink'] ?? '', ENT_QUOTES); ?>" -->
+                            <!--     data-presentation-link="<?= htmlspecialchars($project['PresentationLink'] ?? '', ENT_QUOTES); ?>" -->
+                            <!--     onclick="openProjectModalFromButton(this)" -->
+                            <!-- > -->
+                            <!--     More Details -->
+                            <!-- </button> -->
+                            <button 
+                                class="btn btn-primary" 
+                                data-project='<?= json_encode([
+                                    'name' => $project['Name'],
+                                    'github1' => $project['GithubLink1'],
+                                    'github2' => $project['GithubLink2'],
+                                    'github3' => $project['GithubLink3'],
+                                    'github4' => $project['GithubLink4'],
+                                    'youtube' => $project['YoutubeLink'],
+                                    'paper' => $project['PaperLink'],
+                                    'presentation' => $project['PresentationLink'],
+                                    'description' => $project['LongDescription'] ?? $project['ShortDescription']
+                                ], JSON_HEX_APOS | JSON_HEX_QUOT); ?>'
+                                onclick="openProjectModalFromData(this)"
+                            >
+                                More Details
+                            </button>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+
             </div>
         </div>
 
@@ -398,14 +428,23 @@ function calculateGridPlacement($start_date, $end_date) {
         </div>
 
         <script>
+            // Open modal for Project Details
             function openProjectModal(name, description, github, youtube, paper, presentation) {
+                console.log(description);
+                
                 document.getElementById('project-modal-title').textContent = name;
+                description = sanitizeHTML(description);  // Sanitize to prevent XSS
+                description = description.replace(/\n/g, '<br>'); // Handle newlines
+
+                console.log(description);
+
                 const links = `
                     ${github ? `<a href="${github}" target="_blank">Github</a><br>` : ''}
                     ${youtube ? `<a href="${youtube}" target="_blank">YouTube</a><br>` : ''}
                     ${paper ? `<a href="${paper}" target="_blank">Paper</a><br>` : ''}
                     ${presentation ? `<a href="${presentation}" target="_blank">Presentation</a><br>` : ''}
                 `;
+
                 document.getElementById('project-modal-content').innerHTML = `
                     <strong>Description:</strong> ${description}<br>
                     ${links}
@@ -414,9 +453,72 @@ function calculateGridPlacement($start_date, $end_date) {
                 document.getElementById('project-modal').classList.add('active');
             }
 
+            // Close modal for Project Details
             function closeProjectModal() {
                 document.getElementById('project-overlay').classList.remove('active');
                 document.getElementById('project-modal').classList.remove('active');
+            }
+
+            // Sanitize HTML input to prevent XSS
+            function sanitizeHTML(input) {
+                var element = document.createElement('div');
+                if (input) {
+                    element.innerText = input;  // Escape HTML
+                    element.textContent = input;
+                }
+                return element.innerHTML;  // Return sanitized string
+            }
+
+            // Ensure to sanitize HTML to prevent XSS
+            function sanitizeHTMLFromButton(html) {
+                const temp = document.createElement('div');
+                temp.textContent = html;
+                return temp.innerHTML;
+            }
+
+            function openProjectModalFromButton(button) {
+                const name = button.getAttribute('data-project-name');
+                let description = button.getAttribute('data-project-description');
+                const github = button.getAttribute('data-github-link');
+                const youtube = button.getAttribute('data-youtube-link');
+                const paper = button.getAttribute('data-paper-link');
+                const presentation = button.getAttribute('data-presentation-link');
+
+                console.log(description);
+
+                // Sanitize and process description
+                description = sanitizeHTMLFromButton(description).replace(/\n/g, '<br>');
+
+                document.getElementById('project-modal-title').textContent = name;
+                document.getElementById('project-modal-content').innerHTML = `
+                    ${github ? `<a href="${github}" target="_blank">GitHub</a><br>` : ''}
+                    ${youtube ? `<a href="${youtube}" target="_blank">YouTube</a><br>` : ''}
+                    ${paper ? `<a href="${paper}" target="_blank">Paper</a><br>` : ''}
+                    ${presentation ? `<a href="${presentation}" target="_blank">Presentation</a><br>` : ''}
+                    <strong>Description:</strong> ${description}<br>
+                `;
+                document.getElementById('project-overlay').classList.add('active');
+                document.getElementById('project-modal').classList.add('active');
+            }
+
+            function openProjectModalFromData(button) {
+                const project = JSON.parse(button.getAttribute('data-project'));
+
+                document.getElementById('project-modal-title').textContent = project.name;
+                let description = sanitizeHTMLFromButton(project.description).replace(/\n/g, '<br>');
+
+                document.getElementById('project-modal-content').innerHTML = `
+                    ${project.github1 ? `<a href="${project.github1}" target="_blank">GitHub1</a><br>` : ''}
+                    ${project.github2 ? `<a href="${project.github2}" target="_blank">GitHub2</a><br>` : ''}
+                    ${project.github3 ? `<a href="${project.github3}" target="_blank">GitHub3</a><br>` : ''}
+                    ${project.github4 ? `<a href="${project.github4}" target="_blank">GitHub4</a><br>` : ''}
+                    ${project.youtube ? `<a href="${project.youtube}" target="_blank">YouTube</a><br>` : ''}
+                    ${project.paper ? `<a href="${project.paper}" target="_blank">Paper</a><br>` : ''}
+                    ${project.presentation ? `<a href="${project.presentation}" target="_blank">Presentation</a><br>` : ''}
+                    <strong>Description:</strong> ${description}<br>
+                `;
+                document.getElementById('project-overlay').classList.add('active');
+                document.getElementById('project-modal').classList.add('active');
             }
         </script>
         <!-- End #Projects -->
@@ -482,14 +584,6 @@ function calculateGridPlacement($start_date, $end_date) {
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
-                    <h3>Managerial</h3>
-                    <ul>
-                        <?php foreach ($soft_skills as $skill): ?>
-                            <?php if ($skill['category'] == 'Managerial'): ?>
-                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </ul>
                 </div>
 
                 <!-- Interests -->
@@ -498,6 +592,14 @@ function calculateGridPlacement($start_date, $end_date) {
                     <ul>
                         <?php foreach ($interests as $skill): ?>
                             <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <h3>Managerial</h3>
+                    <ul>
+                        <?php foreach ($soft_skills as $skill): ?>
+                            <?php if ($skill['category'] == 'Managerial'): ?>
+                                <li><?php echo htmlspecialchars($skill['skill_name']); ?></li>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -511,7 +613,7 @@ function calculateGridPlacement($start_date, $end_date) {
     <br>
 
     <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-        <p>Portfolio built based on Template made by <a href="https://github.com/cinapr/TechCareerPortofolioTemplate/">Cindy Aprilia</a> @ 2024</p>
+        <p>Portfolio made by <a href="https://github.com/cinapr/TechCareerPortofolioTemplate/">Cindy Aprilia</a> @ 2024</p>
     </footer>
 </body>
 </html>

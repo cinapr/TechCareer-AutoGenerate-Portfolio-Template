@@ -1,7 +1,7 @@
 # Tech-Career Portfolio Template
 
 This template is designed to help you build a portfolio to showcase your tech career. 
-It includes sections for displaying your work, education, and publications using a timeline chart. 
+It includes sections for displaying your work, education, and publications using a chronological timeline chart. 
 Additionally, it provides sections for certifications, awards, and projects.
 
 ## Demo
